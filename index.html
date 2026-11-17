@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EQUUS // HELIOS — 3D Thoroughbred Gallop Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="./src/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="loader" role="status" aria-live="polite">
+    <div class="loader-title">Equus // Helios</div>
+    <div class="loader-sub">Subdividing C² musculature &amp; compiling volumetric shaders…</div>
+  </div>
+
+  <canvas id="stage" aria-label="Interactive 3D galloping thoroughbred horse in volumetric sunlight"></canvas>
+
+  <div class="hud">
+    <header class="hud-top">
+      <div class="brand-block">
+        <p class="eyebrow">Muybridge Biomechanical Study · WebGL2 PBR</p>
+        <h1 class="title">EQUUS // HELIOS</h1>
+        <p class="subtitle">62,976-tri C² myology sculpt · Marschner fur &amp; 1,460 horsehair locks · Drag to orbit</p>
+      </div>
+
+      <aside class="telemetry" aria-label="Live Gait Telemetry">
+        <div class="hoof-matrix">
+          <span class="hoof-pill" data-hoof="HR"><span class="dot"></span>RH</span>
+          <span class="hoof-pill" data-hoof="HL"><span class="dot"></span>LH</span>
+          <span class="hoof-pill" data-hoof="FR"><span class="dot"></span>RF</span>
+          <span class="hoof-pill" data-hoof="FL"><span class="dot"></span>LF</span>
+          <span class="hoof-pill" data-hoof="AIR"><span class="dot"></span>AIR</span>
+        </div>
+        <div id="gait-phase-label">4-Beat Transverse Gallop</div>
+      </aside>
+    </header>
+
+    <footer class="hud-bottom">
+      <div class="control-cluster" role="toolbar" aria-label="Lighting, Coat and Camera Controls">
+        <div class="group">
+          <span class="group-label">Light</span>
+          <button type="button" class="chip active" data-lighting="ember">Solar Ember</button>
+          <button type="button" class="chip" data-lighting="forge">Crimson Eclipse</button>
+          <button type="button" class="chip" data-lighting="moonlit">Nocturne Mist</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="group">
+          <span class="group-label">Coat</span>
+          <button type="button" class="chip active" data-coat="bay">Blood Bay</button>
+          <button type="button" class="chip" data-coat="obsidian">Friesian</button>
+          <button type="button" class="chip" data-coat="dappleGrey">Andalusian</button>
+          <button type="button" class="chip" data-coat="palomino">Palomino</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="group">
+          <span class="group-label">Lens</span>
+          <button type="button" class="chip active" data-camera="hero">Hero</button>
+          <button type="button" class="chip" data-camera="anatomy">Anatomy</button>
+          <button type="button" class="chip" data-camera="profile">Profile</button>
+          <button type="button" class="chip" data-camera="charge">Charge</button>
+          <button type="button" class="chip" data-camera="silhouette">Backlit</button>
+        </div>
+      </div>
+
+      <div class="control-cluster" role="toolbar" aria-label="Motion and Audio Controls">
+        <button type="button" class="chip" id="btn-play">Pause</button>
+        <button type="button" class="chip" id="btn-slowmo" title="Shortcut: S">Muybridge 0.22×</button>
+        <div class="slider-wrap">
+          <label class="group-label" for="cadence-slider">Pace</label>
+          <input id="cadence-slider" type="range" min="0.10" max="2.30" step="0.02" value="1.58" />
+          <span id="speed-readout">1.58×</span>
+        </div>
+        <div class="divider"></div>
+        <button type="button" class="chip" id="btn-sound">Sound Off</button>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
